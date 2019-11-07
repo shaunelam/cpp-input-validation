@@ -1,4 +1,4 @@
-# Numeric-Validator
+# Input-Validator
 Tired of creating loops so that users can only input numbers in your program?
 
 Skills acquired/enhanced
