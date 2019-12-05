@@ -1,5 +1,5 @@
 # Input-Validator
-Tired of creating loops so that users can only input numbers in your program?
+Tired of creating loops to validate user input?
 
 Skills acquired/enhanced
 1. user input validations
