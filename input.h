@@ -1,7 +1,104 @@
 #include <iostream>
 #include <algorithm>
 #include <string>
+
 using namespace std;
+
+//return an input char
+char inputChar(string prompt, string listChars)
+{
+	char input;
+	do
+	{
+		cout << prompt;
+		if (!(cin >> input))
+		{
+			cout << "ERROR-1A: Invalid input. Must be a character type.\n";
+			cin.clear();
+			cin.ignore(999, '\n');
+		}
+		bool bfound = false;
+		for (unsigned c = 0; c < listChars.length(); c++)
+			if (toupper(listChars[c]) == toupper(input))
+			{
+				bfound = true;
+				break;
+			}
+		if (!bfound)
+		{
+			cout << "ERROR-2A: Invalid input. Must be a character from the list of '";
+			for (unsigned c = 0; c < listChars.length() - 1; c++)
+				cout << "'" << static_cast<char>(toupper(listChars[c])) << "', ";
+			cout << "or '" << static_cast<char>(toupper(listChars.back())) << "'.\n";
+		}
+		else
+			break;
+	} while (true);
+	return input;
+}
+
+//return an input char of y or n
+char inputChar(string prompt, char yes, char no)
+{
+	char input;
+	do
+	{
+		cout << prompt;
+		if (!(cin >> input))
+		{
+			cout << "ERROR-1A: Invalid input. Must be a character type.\n";
+			cin.clear();
+			cin.ignore(999, '\n');
+		}
+		else if (tolower(input) != tolower(yes) && tolower(input) != tolower(no))
+			cout << "ERROR-2A: Invalid input. Must be a '" << static_cast<char>(toupper(yes)) << "' or '" << static_cast<char>(toupper(no)) << "' character.\n";
+		else
+			break;
+	} while (true);
+	return input;
+}
+
+//return an input char
+char inputChar(string prompt, bool alphaOrDigit)
+{
+	char input;
+	do
+	{
+		cout << prompt;
+		if (!(cin >> input))
+		{
+			cout << "ERROR-1A: Invalid input. Must be a character type.\n";
+			cin.clear();
+			cin.ignore(999, '\n');
+		}
+		else if (alphaOrDigit && !isalpha(input))
+			cout << "ERROR-2A: Invalid input. Must be an alphabet character.\n";
+		else if (!alphaOrDigit && !isdigit(input))
+			cout << "ERROR-2A: Invalid input. Must be a digit character.\n";
+		else
+			break;
+	} while (true);
+	return input;
+}
+
+//return an input char
+char inputChar(string prompt)
+{
+	char input;
+	do
+	{
+		cout << prompt;
+		if (!(cin >> input))
+		{
+			cout << "ERROR-1A: Invalid input. Must be a character type.\n";
+			cin.clear();
+			cin.ignore(999, '\n');
+		}
+		else
+			break;
+	} while (true);
+	return input;
+}
 
 //return an input interger
 int inputInteger(string prompt)
